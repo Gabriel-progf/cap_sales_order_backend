@@ -15,15 +15,15 @@ entity SalesOrderItems {
     key id: UUID;
         header: Association to SalesOrderHeaders;
         product: Association to Products;
-        quantity: String;
+        quantity: Integer;
         price: Decimal(15,2);
     
 }
 
 entity Customers {
     key id: UUID;
-        firstName: String(255);
-        lastName: String(255);
+        firstName: String(20);
+        lastName: String(100);
         email: String(255);
 }
 
