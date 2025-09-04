@@ -2,9 +2,9 @@
 
 @headerId=32927063-cf11-4364-806f-7a5f8fa79b09
 @customerId=86e82de8-82c9-425a-97e8-cb1372aa2eca
-@productId=5193708a-8fcb-4e39-8126-b73d79cf2080
+@productId=9e43df84-8ed7-4e40-ab8e-ea7c2e3056c2
 
-GET http://{{localHost}}/SalesOrderHeaders?$filter=id eq {{headerId}}&$expand=items
+GET http://{{localHost}}/SalesOrderHeaders?$filter=id eq {{headerId}} & $expand=items
 Content-Type: application/json
 
 ###
