@@ -1,3 +1,14 @@
-const funcao = (variavel: string) => console.log(variavel);
+import { Service } from '@sap/cds';
+import { Customers } from '@models/sales';
 
-funcao('123');
+export default (service: Service) => {
+  service.after('READ','Customers', (result: Customers) => {
+    result.forEach(customer => {
+      if (!customer.email?.includes('@')) {
+        customer.email = `${customer.email}@gmail.com`;
+      }
+      console.log(customer);
+    });
+    
+  });
+};
