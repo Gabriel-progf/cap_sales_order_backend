@@ -9,6 +9,7 @@ Content-Type: application/json
 
 POST http://{{localHost}}/Customers
 Content-Type: application/json
+Authorization: Basic cuka:Inicial@12345
 
 {
     "id": "{{id}}",

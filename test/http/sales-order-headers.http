@@ -6,11 +6,13 @@
 
 GET http://{{localHost}}/SalesOrderHeaders?$filter=id eq {{headerId}} & $expand=items
 Content-Type: application/json
+Authorization: Basic joaozinho:Inicial@12345
 
 ###
 
 POST http://{{localHost}}/SalesOrderHeaders
 Content-Type: application/json
+Authorization: Basic cuka:Inicial@12345
 
 {
     "id": "{{headerId}}",
