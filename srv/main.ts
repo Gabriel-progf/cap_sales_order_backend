@@ -1,7 +1,10 @@
 import cds, { Request, Service } from "@sap/cds";
 import { Customers, Product, Products, SalesOrderHeaders, SalesOrderItem, SalesOrderItems } from "@models/sales";
+import { customerController } from "./factories/controllers/customer";
+import { FullRequestParams } from "./protocols";
 
 export default (service: Service) => {
+
   service.before('READ', '*', (request: Request) => {
       if (!request.user.is('read_only_user')) {
           return request.reject(403, 'Não autorizado');
@@ -14,13 +17,8 @@ export default (service: Service) => {
       }
   });
 
-  service.after("READ", "Customers", (result: Customers) => {
-    result.forEach((customer) => {
-      if (!customer.email?.includes("@")) {
-        customer.email = `${customer.email}@gmail.com`;
-      }
-      console.log(customer);
-    });
+  service.after("READ", "Customers", (customerList: Customers, request) => {
+    (request as unknown as FullRequestParams<Customers>).results = customerController.afterRead(customerList);
   });
 
   service.before("CREATE", "SalesOrderHeaders", async (request: Request) => {
